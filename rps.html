@@ -1,0 +1,81 @@
+<<script type="text/javascript">
+  function computerPlay(){
+    let choices = ['Rock','Paper','Scissors']
+    return choices[Math.floor(Math.random() * choices.length)];
+  }
+
+  function round(playerSelection, computerSelection){
+    let player = playerSelection.toLowerCase();
+    let comp = computerSelection.toLowerCase();
+    let message;
+
+    switch(player) {
+      case 'rock':
+
+        switch(comp) {
+          case 'rock':
+            message = 'Tie!'
+            break;
+          case 'paper':
+            message = 'You Lose! Paper beats Rock'
+            break;
+          case 'scissors':
+            message = 'You Win! Rock beats Scissors'
+            break;
+          }
+        break;
+
+      case 'paper':
+
+        switch(comp) {
+          case 'rock':
+            message = 'You Win! Paper beats Rock'
+            break;
+          case 'paper':
+            message = 'Tie!'
+            break;
+          case 'scissors':
+            message = 'You Lose! Scissors beats Paper'
+            break;
+          }
+        break;
+
+      case 'scissors':
+
+        switch(comp) {
+          case 'rock':
+            message = 'You Lose! Rock beats Scissors'
+            break;
+          case 'paper':
+            message = 'You Win! Scissors beats Paper'
+            break;
+          case 'scissors':
+            message = 'Tie!'
+            break;
+        }
+        break;
+    }
+    return message;
+  }
+
+  function game() {
+    let thisRound;
+    let pchoice;
+    let pscore = 0;
+    let cscore = 0;
+
+    for (i=0; i<5; i++) {
+      pchoice = window.prompt('Enter Rock, Paper or Scissors!')
+      thisRound = round(pchoice,computerPlay());
+      if (thisRound.includes('Win')) {
+        pscore++
+      } else if (thisRound.includes('Lose')) {
+        cscore++
+      }
+      console.log(thisRound)
+      console.log('Player: ' + pscore + ', Comp: ' + cscore)
+    }
+
+  }
+  game()
+</script>
